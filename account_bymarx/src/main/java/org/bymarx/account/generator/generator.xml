@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+<generatorConfiguration>  
+    <!-- ���ݿ�������λ�� -->  
+    <classPathEntry location="/home/h/workspace/account/account_bymarx/src/main/java/org/bymarx/account/generator/mysql-connector-java-5.1.34.jar" />
+    <!-- <classPathEntry location="C:\oracle\product\10.2.0\db_1\jdbc\lib\ojdbc14.jar" />-->  
+    <context id="DB2Tables" targetRuntime="MyBatis3">  
+        <commentGenerator>  
+            <property name="suppressAllComments" value="true" />  
+        </commentGenerator>  
+        <!-- ���ݿ�����URL���û��������� -->  
+         <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/wp_bm?characterEncoding=utf8" userId="root" password="root">
+        <!--<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver" connectionURL="jdbc:oracle:thin:@localhost:1521:orcl" userId="msa" password="msa">-->  
+        </jdbcConnection>  
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false" />  
+        </javaTypeResolver>  
+        <!-- ����ģ�͵İ�����λ�� -->  
+        <javaModelGenerator targetPackage="org.bymarx.account.model" targetProject="/home/h/workspace/account/account_bymarx/src/main/java">  
+            <property name="enableSubPackages" value="true" />  
+            <property name="trimStrings" value="true" />  
+        </javaModelGenerator>  
+        <!-- ���ɵ�ӳ���ļ�������λ�� -->  
+        <sqlMapGenerator targetPackage="mapper" targetProject="/home/h/workspace/account/account_bymarx/src/main/java">
+            <property name="enableSubPackages" value="true" />  
+        </sqlMapGenerator>  
+        <!-- ����DAO�İ�����λ�� -->  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="org.bymarx.account.dao" targetProject="/home/h/workspace/account/account_bymarx/src/main/java">  
+            <property name="enableSubPackages" value="true" />  
+        </javaClientGenerator>  
+        <!-- Ҫ������Щ��(����tableName��domainObjectName�Ϳ���) -->  
+        <!--<table tableName="ROLE" domainObjectName="Role" enableCountByExample="FALSE" enableUpdateByExample="FALSE" enableDeleteByExample="FALSE" enableSelectByExample="FALSE" selectByExampleQueryId="FALSE" />  -->
+        <table tableName="bm_users" domainObjectName="User" enableCountByExample="FALSE" enableUpdateByExample="FALSE" enableDeleteByExample="FALSE" enableSelectByExample="FALSE" selectByExampleQueryId="FALSE" />
+        <!--<table tableName="USERINFO" domainObjectName="UserInfo" enableCountByExample="FALSE" enableUpdateByExample="FALSE" enableDeleteByExample="FALSE" enableSelectByExample="FALSE" selectByExampleQueryId="FALSE" />  -->
+        <!--<table tableName="TOPIC" domainObjectName="Topic" enableCountByExample="FALSE" enableUpdateByExample="FALSE" enableDeleteByExample="FALSE" enableSelectByExample="FALSE" selectByExampleQueryId="FALSE" />  -->
+        <!--<table tableName="RECORD" domainObjectName="Record" enableCountByExample="FALSE" enableUpdateByExample="FALSE" enableDeleteByExample="FALSE" enableSelectByExample="FALSE" selectByExampleQueryId="FALSE" />  -->
+        <!--<table tableName="RECORDBOOK" domainObjectName="RecordBook" enableCountByExample="FALSE" enableUpdateByExample="FALSE" enableDeleteByExample="FALSE" enableSelectByExample="FALSE" selectByExampleQueryId="FALSE" />  -->
+        <!--<table tableName="CATEGORY" domainObjectName="Category" enableCountByExample="FALSE" enableUpdateByExample="FALSE" enableDeleteByExample="FALSE" enableSelectByExample="FALSE" selectByExampleQueryId="FALSE" />  -->
+        <!--<table tableName="MAJOR" domainObjectName="Major" enableCountByExample="FALSE" enableUpdateByExample="FALSE" enableDeleteByExample="FALSE" enableSelectByExample="FALSE" selectByExampleQueryId="FALSE" />  		-->
+    </context>
+</generatorConfiguration> 
