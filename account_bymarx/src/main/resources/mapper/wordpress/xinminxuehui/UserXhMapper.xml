@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="org.bymarx.account.dao.UserMapper" >
+<mapper namespace="org.bymarx.account.dao.wordpress.xinminxuehui.UserXhMapper" >
   <resultMap id="BaseResultMap" type="org.bymarx.account.model.User" >
     <id column="ID" property="id" jdbcType="BIGINT" />
     <result column="user_login" property="userLogin" jdbcType="VARCHAR" />
@@ -20,21 +20,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from bm_users
+    from wp_users
     where ID = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectByUserLogin" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select
     <include refid="Base_Column_List" />
-    from bm_users
+    from wp_users
     where user_login = #{userLogin,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from bm_users
+    delete from wp_users
     where ID = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="org.bymarx.account.model.User" >
-    insert into bm_users (ID, user_login, user_pass, 
+    insert into wp_users (ID, user_login, user_pass, 
       user_nicename, user_email, user_url, 
       user_registered, user_activation_key, user_status, 
       display_name)
@@ -44,7 +44,7 @@
       #{displayName,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.bymarx.account.model.User" >
-    insert into bm_users
+    insert into wp_users
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         ID,
@@ -111,7 +111,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="org.bymarx.account.model.User" >
-    update bm_users
+    update wp_users
     <set >
       <if test="userLogin != null" >
         user_login = #{userLogin,jdbcType=VARCHAR},
@@ -144,7 +144,7 @@
     where ID = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.bymarx.account.model.User" >
-    update bm_users
+    update wp_users
     set user_login = #{userLogin,jdbcType=VARCHAR},
       user_pass = #{userPass,jdbcType=VARCHAR},
       user_nicename = #{userNicename,jdbcType=VARCHAR},

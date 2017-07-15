@@ -24,6 +24,7 @@
 		<java.version>1.8</java.version>
         <mybatis-spring-boot>1.2.0</mybatis-spring-boot>
         <druid>1.0.18</druid>
+		<fastjson.version>1.2.11</fastjson.version>
 	</properties>
 
 	<dependencies>
@@ -86,6 +87,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- ====================json/xml======================== -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
 		</dependency>
 	</dependencies>
 

@@ -1,8 +1,8 @@
-package org.bymarx.account.dao;
+package org.bymarx.account.dao.wordpress.xinminxuehui;
 
 import org.bymarx.account.model.User;
 
-public interface UserMapper {
+public interface UserXhMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(User record);
