@@ -71,6 +71,13 @@ public class WordpressPasswordHasher {
     }
 
 
+    /**
+     * 加密
+     *
+     * @param password
+     * @return  密文
+     * @throws NoSuchAlgorithmException
+     */
     public static String HashPassword (String password) throws NoSuchAlgorithmException{
         if (password.length() > 4096) {
             return "*";
@@ -90,20 +97,6 @@ public class WordpressPasswordHasher {
         }
         return "*";
     }
-
-//    public static void main(String[] args) {
-//        try {
-//            String hash = HashPassword("90909bu0");
-//            System.out.println(hash);
-//            System.out.println("$P$B12345678huiyw4r7qhfuhs8yjmd6ef".length());
-//            System.out.println(hash.length());
-//
-////            for(int i=0;1<10;i++){
-////            }
-//        } catch (Exception e) {
-//
-//        }
-//    }
 
     /**
      * Check password

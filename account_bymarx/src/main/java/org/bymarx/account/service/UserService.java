@@ -10,5 +10,5 @@ public interface UserService {
 
     boolean isLogin(String username, String pwd);
 
-    void addUser(UserInfo userInfo,String domain);
+    void addUser(UserInfo userInfo,byte domain);
 }

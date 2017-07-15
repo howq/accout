@@ -9,6 +9,10 @@ public class Usermeta {
 
     private String metaValue;
 
+    public Usermeta(Long userId) {
+        this.userId = userId;
+    }
+
     public Long getUmetaId() {
         return umetaId;
     }
@@ -22,7 +26,7 @@ public class Usermeta {
     }
 
     public void setUserId(Long userId) {
-        this.userId = userId;
+        this.userId = this.userId;
     }
 
     public String getMetaKey() {

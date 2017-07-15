@@ -17,17 +17,17 @@ import javax.annotation.Resource;
  **/
 @RequestMapping("/wp")
 @RestController
-public class WordPressController extends WebExceptionHandler{
+public class WordPressController extends WebExceptionHandler {
 
     @Resource
     private UserService userService;
 
-    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public Result<Object> add(UserInfo userInfo,
-                        @RequestParam(value = "domain",required = true) String domain){
+                              @RequestParam(value = "domain", required = true) byte domain) {
         logger.info("=========新增用户==============");
         Result<Object> result = new Result<Object>();
-        if(!userInfo.getPass1().equals(userInfo.getPass2())){
+        if (!userInfo.getPass1().equals(userInfo.getPass2())) {
             logger.error("=========新增用户失败:密码不对应==============");
             result.setCode(Result.Code.ERROR);
             result.setMessage("新增用户失败:密码不对应");
@@ -48,8 +48,8 @@ public class WordPressController extends WebExceptionHandler{
         return result;
     }
 
-    @RequestMapping(value = "/del",method = RequestMethod.POST)
-    public Result<Object> del(@RequestParam(value = "ids",required = true) String ids){
+    @RequestMapping(value = "/del", method = RequestMethod.POST)
+    public Result<Object> del(@RequestParam(value = "ids", required = true) String ids, @RequestParam(value = "domain", required = true) byte domain) {
         logger.info("=========删除用户==============");
         Result<Object> result = new Result<Object>();
         try {
