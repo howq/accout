@@ -13,7 +13,12 @@ import java.util.ArrayList;
  **/
 public class UsermetaCollection {
 
-    ArrayList<Usermeta> usermetas = new ArrayList<>(13);
+    /**
+     * 用户元素的初始容量
+     */
+    private static final int metaCapacity = 12;
+
+    ArrayList<Usermeta> usermetas = new ArrayList<>(metaCapacity);
 
     UserInfo userInfo;
 
