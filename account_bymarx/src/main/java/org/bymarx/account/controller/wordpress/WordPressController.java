@@ -15,7 +15,8 @@ import javax.annotation.Resource;
  * @author howq
  * @create 2017-07-13 11:33
  **/
-@RestController("/wp")
+@RequestMapping("/wp")
+@RestController
 public class WordPressController extends WebExceptionHandler{
 
     @Resource
@@ -26,8 +27,16 @@ public class WordPressController extends WebExceptionHandler{
                         @RequestParam(value = "domain",required = true) String domain){
         logger.info("=========新增用户==============");
         Result<Object> result = new Result<Object>();
+        if(!userInfo.getPass1().equals(userInfo.getPass2())){
+            logger.error("=========新增用户失败:密码不对应==============");
+            result.setCode(Result.Code.ERROR);
+            result.setMessage("新增用户失败:密码不对应");
+            return result;
+        }
         try {
+            userService.addUser(userInfo, domain);
 //            topicService.delTopic(topicId, request);
+
         } catch (Exception e) {
             logger.error("=========新增用户失败:" + e.getMessage() + "==============");
             result.setCode(Result.Code.ERROR);

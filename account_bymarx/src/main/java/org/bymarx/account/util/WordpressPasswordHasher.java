@@ -2,6 +2,7 @@ package org.bymarx.account.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 
 /**
  * @author howq
@@ -68,6 +69,41 @@ public class WordpressPasswordHasher {
         } while (i < count);
         return output;
     }
+
+
+    public static String HashPassword (String password) throws NoSuchAlgorithmException{
+        if (password.length() > 4096) {
+            return "*";
+        }
+
+        Random random = new Random();
+        StringBuffer sb = new StringBuffer();
+        sb.append("$P$B");
+        for (int i = 0; i < 8; i++) {
+            int number = random.nextInt(strItoa64.length());
+            sb.append(strItoa64.charAt(number));
+        }
+
+        String hash = cryptPrivate(password, sb.toString());
+        if(34==hash.length()){
+            return hash;
+        }
+        return "*";
+    }
+
+//    public static void main(String[] args) {
+//        try {
+//            String hash = HashPassword("90909bu0");
+//            System.out.println(hash);
+//            System.out.println("$P$B12345678huiyw4r7qhfuhs8yjmd6ef".length());
+//            System.out.println(hash.length());
+//
+////            for(int i=0;1<10;i++){
+////            }
+//        } catch (Exception e) {
+//
+//        }
+//    }
 
     /**
      * Check password
