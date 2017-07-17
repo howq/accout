@@ -26,26 +26,59 @@ public class UsermetaCollection {
 
     Long userId;
 
+    String table_pre;
+
+    String bm_capabilities;
+
+    String user_level;
+
     public UsermetaCollection(UserInfo userInfo, byte domain, Long id) {
         this.userInfo = userInfo;
         this.domain = domain;
         this.userId = id;
+
+        if (this.domain != AccountConst.DOMAIN_BYMARX) {
+            table_pre = "bm_";
+        } else {
+            table_pre = "wp_";
+        }
+        if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_SUBSCRIBER.getRole())){
+            bm_capabilities = USERROLEENUM.USERROLEENUM_SUBSCRIBER.getCapabilities();
+        }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_CONTRIBUTOR.getRole())){
+            bm_capabilities = USERROLEENUM.USERROLEENUM_CONTRIBUTOR.getCapabilities();
+        }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_AUTHOR.getRole())){
+            bm_capabilities = USERROLEENUM.USERROLEENUM_AUTHOR.getCapabilities();
+        }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_EDITOR.getRole())){
+            bm_capabilities = USERROLEENUM.USERROLEENUM_EDITOR.getCapabilities();
+        }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_ADMINISTRATOR.getRole())){
+            bm_capabilities = USERROLEENUM.USERROLEENUM_ADMINISTRATOR.getCapabilities();
+        }
+        if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_SUBSCRIBER.getRole())){
+            user_level = USERROLEENUM.USERROLEENUM_SUBSCRIBER.getUserLevel();
+        }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_CONTRIBUTOR.getRole())){
+            user_level = USERROLEENUM.USERROLEENUM_CONTRIBUTOR.getUserLevel();
+        }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_AUTHOR.getRole())){
+            user_level = USERROLEENUM.USERROLEENUM_AUTHOR.getUserLevel();
+        }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_EDITOR.getRole())){
+            user_level = USERROLEENUM.USERROLEENUM_EDITOR.getUserLevel();
+        }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_ADMINISTRATOR.getRole())){
+            user_level = USERROLEENUM.USERROLEENUM_ADMINISTRATOR.getUserLevel();
+        }
+
         this.genericUserMetas();
     }
 
     private void genericUserMetas() {
-        for (Usermeta usermeta : usermetas) {
-            usermeta = new Usermeta(this.userId);
+        int i = 0;
+        for (; i < metaCapacity; i++) {
+            Usermeta usermeta = new Usermeta(this.userId);
             usermetas.add(usermeta);
         }
-        int i = 0;
+        i = 0;
         for (USERMETAENUM usermetaenum : USERMETAENUM.values()) {
             if (10 != i && 11 != i) {
-                usermetas.get(i).setMetaKey(usermetaenum.getCode());
+                usermetas.get(i).setMetaKey(usermetaenum.getKey());
             }
-            String table_pre = null;
-            String bm_capabilities = null;
-            String user_level = null;
             switch (i) {
                 case 0:
                     usermetas.get(i).setMetaValue(userInfo.getUser_login());
@@ -78,43 +111,11 @@ public class UsermetaCollection {
                     usermetas.get(i).setMetaValue("");
                     break;
                 case 10:
-                    if (this.domain == AccountConst.DOMAIN_BYMARX) {
-                        table_pre = "bm_";
-                    } else {
-                        table_pre = "wp_";
-                    }
-                    usermetas.get(i).setMetaKey(table_pre + usermetaenum.getCode());
-                    if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_SUBSCRIBER.getRole())){
-                        bm_capabilities = USERROLEENUM.USERROLEENUM_SUBSCRIBER.getCapabilities();
-                    }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_CONTRIBUTOR.getRole())){
-                        bm_capabilities = USERROLEENUM.USERROLEENUM_CONTRIBUTOR.getCapabilities();
-                    }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_AUTHOR.getRole())){
-                        bm_capabilities = USERROLEENUM.USERROLEENUM_AUTHOR.getCapabilities();
-                    }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_EDITOR.getRole())){
-                        bm_capabilities = USERROLEENUM.USERROLEENUM_EDITOR.getCapabilities();
-                    }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_ADMINISTRATOR.getRole())){
-                        bm_capabilities = USERROLEENUM.USERROLEENUM_ADMINISTRATOR.getCapabilities();
-                    }
+                    usermetas.get(i).setMetaKey(table_pre + usermetaenum.getKey());
                     usermetas.get(i).setMetaValue(bm_capabilities);
                     break;
                 case 11:
-                    if (this.domain == AccountConst.DOMAIN_BYMARX) {
-                        table_pre = "bm_";
-                    } else {
-                        table_pre = "wp_";
-                    }
-                    usermetas.get(i).setMetaKey(table_pre + usermetaenum.getCode());
-                    if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_SUBSCRIBER.getRole())){
-                        user_level = USERROLEENUM.USERROLEENUM_SUBSCRIBER.getUserLevel();
-                    }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_CONTRIBUTOR.getRole())){
-                        user_level = USERROLEENUM.USERROLEENUM_CONTRIBUTOR.getUserLevel();
-                    }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_AUTHOR.getRole())){
-                        user_level = USERROLEENUM.USERROLEENUM_AUTHOR.getUserLevel();
-                    }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_EDITOR.getRole())){
-                        user_level = USERROLEENUM.USERROLEENUM_EDITOR.getUserLevel();
-                    }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_ADMINISTRATOR.getRole())){
-                        user_level = USERROLEENUM.USERROLEENUM_ADMINISTRATOR.getUserLevel();
-                    }
+                    usermetas.get(i).setMetaKey(table_pre + usermetaenum.getKey());
                     usermetas.get(i).setMetaValue(user_level);
                     break;
                 default:
