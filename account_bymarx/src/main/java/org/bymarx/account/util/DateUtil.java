@@ -104,11 +104,13 @@ public class DateUtil {
 		cal.set(Calendar.MONTH, month);
 		if ((cal.get(Calendar.YEAR) % 4) == 0) {
 			if ((cal.get(Calendar.YEAR) % 100) == 0
-					&& (cal.get(Calendar.YEAR) % 400) != 0)
-				return DOMonth[cal.get(Calendar.MONTH)];
+					&& (cal.get(Calendar.YEAR) % 400) != 0) {
+                return DOMonth[cal.get(Calendar.MONTH)];
+            }
 			return lDOMonth[cal.get(Calendar.MONTH)];
-		} else
-			return DOMonth[cal.get(Calendar.MONTH)];
+		} else {
+            return DOMonth[cal.get(Calendar.MONTH)];
+        }
 	}
 
 	public static Calendar getClearCalendar() {
@@ -168,8 +170,9 @@ public class DateUtil {
 	 * @return
 	 */
 	public static String getFormatDate(Object dateobj, String format) {
-		if(dateobj == null)
-			return null;
+		if(dateobj == null) {
+            return null;
+        }
 		if(dateobj instanceof Date){
 			return getFormatDate((Date)dateobj,format);
 		}else{
@@ -506,8 +509,9 @@ public class DateUtil {
 	 * @return
 	 */
 	public static Date getDayStart(Date date) {
-		if (date == null)
-			return null;
+		if (date == null) {
+            return null;
+        }
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		c.set(Calendar.HOUR_OF_DAY, 0);
@@ -518,8 +522,9 @@ public class DateUtil {
 	}
 
 	public static Date getDayEnd(Date date) {
-		if (date == null)
-			return null;
+		if (date == null) {
+            return null;
+        }
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		c.set(Calendar.HOUR_OF_DAY, 23);
@@ -536,8 +541,9 @@ public class DateUtil {
 	 * @return
 	 */
 	public static Date getDayEndBeforeOneH(Date date) {
-		if (date == null)
-			return null;
+		if (date == null) {
+            return null;
+        }
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
 		c.set(Calendar.HOUR_OF_DAY, 23);
@@ -1037,10 +1043,12 @@ public class DateUtil {
 	 			minute = (int)time % 60;
 	 		}
 	 		String hourStr = "" + hour, minuteStr = "" + minute;
-	 		if (hour < 10)
-	 			hourStr = "0" + hour;
-	 		if (minute < 10)
-	 			minuteStr = "0" + minute;
+	 		if (hour < 10) {
+                hourStr = "0" + hour;
+            }
+	 		if (minute < 10) {
+                minuteStr = "0" + minute;
+            }
 	 		return day + "天" + hourStr + "点" +minuteStr + "分";
 	 	}
 	 	

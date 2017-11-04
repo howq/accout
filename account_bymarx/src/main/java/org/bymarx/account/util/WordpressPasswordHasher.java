@@ -9,28 +9,34 @@ import java.util.Random;
  * @create 2017-07-11 下午5:34
  **/
 public class WordpressPasswordHasher {
-    private static final String strItoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    private static final String STRITOA64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
     private static String cryptPrivate(String password, String setting)
             throws NoSuchAlgorithmException {
         String output = "*0";
-        if (setting.startsWith(output))
-            output = "*1";
+        if (setting.startsWith(output)) {
+            {
+                output = "*1";
+            }
+        }
 
         String id = setting.substring(0, 3);
 
-        if (!id.equals("$P$") && !id.equals("$H$"))
+        if (!"$P$".equals(id) && !"$H$".equals(id)) {
             return output;
+        }
 
-        int count_log2 = strItoa64.indexOf(setting.substring(3, 4));
-        if (count_log2 < 7 || count_log2 > 30)
+        int count_log2 = STRITOA64.indexOf(setting.substring(3, 4));
+        if (count_log2 < 7 || count_log2 > 30) {
             return output;
+        }
 
         int count = 1 << count_log2;
 
         String salt = setting.substring(4, 12);
-        if (salt.length() != 8)
+        if (salt.length() != 8) {
             return output;
+        }
 
         MessageDigest md = MessageDigest.getInstance("MD5");
         md.update((salt + password).getBytes());
@@ -54,18 +60,22 @@ public class WordpressPasswordHasher {
         int i = 0;
         do {
             int value = input[i++] & 0xFF;
-            output += strItoa64.charAt(value & 0x3f);
-            if (i < count)
+            output += STRITOA64.charAt(value & 0x3f);
+            if (i < count) {
                 value |= ((input[i] & 0xFF) << 8);
-            output += strItoa64.charAt((value >> 6) & 0x3f);
-            if (i++ >= count)
+            }
+            output += STRITOA64.charAt((value >> 6) & 0x3f);
+            if (i++ >= count) {
                 break;
-            if (i < count)
+            }
+            if (i < count) {
                 value |= ((input[i] & 0xFF) << 16);
-            output += strItoa64.charAt((value >> 12) & 0x3f);
-            if (i++ >= count)
+            }
+            output += STRITOA64.charAt((value >> 12) & 0x3f);
+            if (i++ >= count) {
                 break;
-            output += strItoa64.charAt((value >> 18) & 0x3f);
+            }
+            output += STRITOA64.charAt((value >> 18) & 0x3f);
         } while (i < count);
         return output;
     }
@@ -87,8 +97,8 @@ public class WordpressPasswordHasher {
         StringBuffer sb = new StringBuffer();
         sb.append("$P$B");
         for (int i = 0; i < 8; i++) {
-            int number = random.nextInt(strItoa64.length());
-            sb.append(strItoa64.charAt(number));
+            int number = random.nextInt(STRITOA64.length());
+            sb.append(STRITOA64.charAt(number));
         }
 
         String hash = cryptPrivate(password, sb.toString());

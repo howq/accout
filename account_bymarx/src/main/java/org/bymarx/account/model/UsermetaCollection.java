@@ -16,9 +16,9 @@ public class UsermetaCollection {
     /**
      * 用户元素的初始容量
      */
-    private static final int metaCapacity = 12;
+    private static final int METACAPACITY = 12;
 
-    ArrayList<Usermeta> usermetas = new ArrayList<>(metaCapacity);
+    ArrayList<Usermeta> usermetas = new ArrayList<>(METACAPACITY);
 
     UserInfo userInfo;
 
@@ -70,7 +70,7 @@ public class UsermetaCollection {
 
     private void genericUserMetas() {
         int i = 0;
-        for (; i < metaCapacity; i++) {
+        for (; i < METACAPACITY; i++) {
             Usermeta usermeta = new Usermeta(this.userId);
             usermetas.add(usermeta);
         }

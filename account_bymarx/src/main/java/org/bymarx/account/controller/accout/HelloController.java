@@ -26,9 +26,9 @@ public class HelloController {
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login(@RequestParam(value = "username",required = true) String username,
     @RequestParam(value = "pwd",required = true) String pwd){
-        if(userService.isLogin(username, pwd))
+        if(userService.isLogin(username, pwd)) {
             return "1";
-
+        }
         return "0";
     }
 }
