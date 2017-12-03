@@ -16,10 +16,10 @@ Date: 2017-11-04 01:46:40
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for bm_commentmeta
+-- Table structure for wp_commentmeta
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_commentmeta`;
-CREATE TABLE `bm_commentmeta` (
+DROP TABLE IF EXISTS `wp_commentmeta`;
+CREATE TABLE `wp_commentmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `comment_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
@@ -30,10 +30,10 @@ CREATE TABLE `bm_commentmeta` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_comments
+-- Table structure for wp_comments
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_comments`;
-CREATE TABLE `bm_comments` (
+DROP TABLE IF EXISTS `wp_comments`;
+CREATE TABLE `wp_comments` (
   `comment_ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `comment_post_ID` bigint(20) unsigned NOT NULL DEFAULT '0',
   `comment_author` tinytext COLLATE utf8mb4_unicode_520_ci NOT NULL,
@@ -58,10 +58,10 @@ CREATE TABLE `bm_comments` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_links
+-- Table structure for wp_links
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_links`;
-CREATE TABLE `bm_links` (
+DROP TABLE IF EXISTS `wp_links`;
+CREATE TABLE `wp_links` (
   `link_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `link_url` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `link_name` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -80,10 +80,10 @@ CREATE TABLE `bm_links` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_options
+-- Table structure for wp_options
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_options`;
-CREATE TABLE `bm_options` (
+DROP TABLE IF EXISTS `wp_options`;
+CREATE TABLE `wp_options` (
   `option_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `option_name` varchar(191) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `option_value` longtext COLLATE utf8mb4_unicode_520_ci NOT NULL,
@@ -93,10 +93,10 @@ CREATE TABLE `bm_options` (
 ) ENGINE=MyISAM AUTO_INCREMENT=240 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_postmeta
+-- Table structure for wp_postmeta
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_postmeta`;
-CREATE TABLE `bm_postmeta` (
+DROP TABLE IF EXISTS `wp_postmeta`;
+CREATE TABLE `wp_postmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `post_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
@@ -107,10 +107,10 @@ CREATE TABLE `bm_postmeta` (
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_posts
+-- Table structure for wp_posts
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_posts`;
-CREATE TABLE `bm_posts` (
+DROP TABLE IF EXISTS `wp_posts`;
+CREATE TABLE `wp_posts` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `post_author` bigint(20) unsigned NOT NULL DEFAULT '0',
   `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -142,10 +142,10 @@ CREATE TABLE `bm_posts` (
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_termmeta
+-- Table structure for wp_termmeta
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_termmeta`;
-CREATE TABLE `bm_termmeta` (
+DROP TABLE IF EXISTS `wp_termmeta`;
+CREATE TABLE `wp_termmeta` (
   `meta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
@@ -156,10 +156,10 @@ CREATE TABLE `bm_termmeta` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_terms
+-- Table structure for wp_terms
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_terms`;
-CREATE TABLE `bm_terms` (
+DROP TABLE IF EXISTS `wp_terms`;
+CREATE TABLE `wp_terms` (
   `term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `slug` varchar(200) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -170,10 +170,10 @@ CREATE TABLE `bm_terms` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_term_relationships
+-- Table structure for wp_term_relationships
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_term_relationships`;
-CREATE TABLE `bm_term_relationships` (
+DROP TABLE IF EXISTS `wp_term_relationships`;
+CREATE TABLE `wp_term_relationships` (
   `object_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `term_taxonomy_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `term_order` int(11) NOT NULL DEFAULT '0',
@@ -182,10 +182,10 @@ CREATE TABLE `bm_term_relationships` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_term_taxonomy
+-- Table structure for wp_term_taxonomy
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_term_taxonomy`;
-CREATE TABLE `bm_term_taxonomy` (
+DROP TABLE IF EXISTS `wp_term_taxonomy`;
+CREATE TABLE `wp_term_taxonomy` (
   `term_taxonomy_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `term_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `taxonomy` varchar(32) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
@@ -198,10 +198,10 @@ CREATE TABLE `bm_term_taxonomy` (
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_usermeta
+-- Table structure for wp_usermeta
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_usermeta`;
-CREATE TABLE `bm_usermeta` (
+DROP TABLE IF EXISTS `wp_usermeta`;
+CREATE TABLE `wp_usermeta` (
   `umeta_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) unsigned NOT NULL DEFAULT '0',
   `meta_key` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
@@ -212,10 +212,10 @@ CREATE TABLE `bm_usermeta` (
 ) ENGINE=MyISAM AUTO_INCREMENT=395 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 -- ----------------------------
--- Table structure for bm_users
+-- Table structure for wp_users
 -- ----------------------------
-DROP TABLE IF EXISTS `bm_users`;
-CREATE TABLE `bm_users` (
+DROP TABLE IF EXISTS `wp_users`;
+CREATE TABLE `wp_users` (
   `ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `user_login` varchar(60) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
   `user_pass` varchar(255) COLLATE utf8mb4_unicode_520_ci NOT NULL DEFAULT '',
