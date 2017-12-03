@@ -18,6 +18,8 @@ public class UsermetaCollection {
      */
     private static final int METACAPACITY = 12;
 
+    private static final String TABLE_PRE = "wp_";
+
     ArrayList<Usermeta> usermetas = new ArrayList<>(METACAPACITY);
 
     UserInfo userInfo;
@@ -37,11 +39,7 @@ public class UsermetaCollection {
         this.domain = domain;
         this.userId = id;
 
-        if (this.domain != AccountConst.DOMAIN_BYMARX) {
-            table_pre = "bm_";
-        } else {
-            table_pre = "wp_";
-        }
+        table_pre = TABLE_PRE;
         if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_SUBSCRIBER.getRole())){
             bm_capabilities = USERROLEENUM.USERROLEENUM_SUBSCRIBER.getCapabilities();
         }else if(userInfo.getRole().equals(USERROLEENUM.USERROLEENUM_CONTRIBUTOR.getRole())){
